@@ -46,22 +46,7 @@ class HomeScreenState extends State<HomeScreen> {
               FutureBuilder(
                 future: weatherServices.fetchWeatherData(),
                 builder: ((context, AsyncSnapshot<WeatherModel> snapshot) {
-                  if (!snapshot.hasData) {
-                    return const Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.white,
-                      ),
-                    );
-                  }
-                  // else if (snapshot.hasError) {
-                  //   return const Center(
-                  //     child: Text(
-                  //       "Some Error Occurred",
-                  //       style: TextStyle(fontSize: 18.0, color: Colors.white),
-                  //     ),
-                  //   );
-                  // }
-                  else {
+                  if (snapshot.hasData) {
                     return Column(
                       children: [
                         // this
@@ -124,6 +109,21 @@ class HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                       ],
+                    );
+                  }
+                  // else if (snapshot.hasError) {
+                  //   return const Center(
+                  //     child: Text(
+                  //       "Some Error Occurred",
+                  //       style: TextStyle(fontSize: 18.0, color: Colors.white),
+                  //     ),
+                  //   );
+                  // }
+                  else {
+                    return const Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.white,
+                      ),
                     );
                   }
                 }),
