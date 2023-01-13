@@ -68,7 +68,7 @@ class HomeScreenState extends State<HomeScreen> {
                         SizedBox(height: height * 0.03),
                         Text(
                           // Country name
-                          snapshot.data!.current!.tempC.toString(),
+                          snapshot.data!.location!.name.toString(),
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 20,
