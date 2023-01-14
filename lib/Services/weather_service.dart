@@ -7,12 +7,12 @@ class WeatherServices {
   Future<WeatherModel> fetchWeatherData() async {
     final response = await http.get(
       Uri.parse(
-          'http://api.weatherapi.com/v1/forecast.json?key=f63cdb0138834263bb8144613231201&q=karachi&days=6&aqi=no&alerts=no'),
+          'http://api.weatherapi.com/v1/forecast.json?key=6503818c79424855b9e190640231401&q=Karachi&days=6&aqi=no&alerts=no'),
     );
 
-    var data = jsonDecode(response.body.toString());
+    var data = jsonDecode(response.body);
     if (response.statusCode == 200) {
-      // print(data);
+      print(data);
       // print(response.statusCode);
 
       // used when want data in list form
