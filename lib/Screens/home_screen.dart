@@ -47,9 +47,6 @@ class HomeScreenState extends State<HomeScreen> {
                 future: weatherServices.fetchWeatherData(),
                 builder: ((context, AsyncSnapshot<WeatherModel> snapshot) {
                   if (snapshot.hasData) {
-                    print("Data: ");
-                    // print(snapshot.data![index].location!.name.toString());
-
                     return Column(
                       children: [
                         // this
@@ -114,13 +111,12 @@ class HomeScreenState extends State<HomeScreen> {
                       ],
                     );
                   } else if (snapshot.hasError) {
-                    print(snapshot.data);
                     return Center(
                       child: Text(
                         '${snapshot.hasError}',
                         style: const TextStyle(
-                          fontSize: 18.0,
                           color: Colors.white,
+                          fontSize: 18,
                         ),
                       ),
                     );
