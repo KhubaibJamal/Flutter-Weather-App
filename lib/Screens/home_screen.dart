@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/Models/weather_model.dart';
 import 'package:weather_app/Services/weather_service.dart';
 import '../Utils/location_converter.dart';
+import '../Widgets/reusable_container_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -31,13 +32,7 @@ class HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
-  bool isData = true;
-
-  // // latitude and longitude
-  // String latitude = '';
-  // String longitude = '';
-
-  // String _apiData = '';
+  bool isData = false;
 
   @override
   Widget build(BuildContext context) {
@@ -85,18 +80,11 @@ class HomeScreenState extends State<HomeScreen> {
                         color: Colors.white,
                       ),
                       suffixIcon: IconButton(
-                        onPressed: () {
+                        onPressed: () async {
                           if (countryController.text.isNotEmpty) {
                             locationConverter
                                 .getLatLng(countryController.text.toString());
-                            // // Data from API
-                            // final data = await weatherServices.fetchWeatherData(
-                            //     locationConverter.latitude,
-                            //     locationConverter.longitude);
-                            // setState(() {
-                            //   _apiData = data as String?;
-                            // });
-                            // print(countryController.text);
+                            print(countryController.text);
                           } else {
                             ScaffoldMessenger.of(context)
                               ..removeCurrentSnackBar()
@@ -149,8 +137,11 @@ class HomeScreenState extends State<HomeScreen> {
                           '24.860735', '67.001137'),
                   builder: ((context, AsyncSnapshot<WeatherModel> snapshot) {
                     if (snapshot.hasData) {
-                      print(locationConverter.latitude);
                       isData = true;
+                      // setState(() {
+                      //   isData = !isData;
+                      // });
+                      print(locationConverter.latitude);
                       return Column(
                         // mainAxisAlignment: MainAxisAlignment.center,
                         // crossAxisAlignment: CrossAxisAlignment.center,
@@ -181,8 +172,8 @@ class HomeScreenState extends State<HomeScreen> {
                               itemCount: snapshot.data!.weather!.length,
                               itemBuilder: (context, index) {
                                 return Column(
-                                  // mainAxisAlignment:
-                                  //     MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   // crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     // icon, title, subtitle, degree, sub container
@@ -192,6 +183,7 @@ class HomeScreenState extends State<HomeScreen> {
                                         scale: 5,
                                       ),
                                     ),
+                                    // SizedBox(height: height * 0.02),
                                     Text(
                                       snapshot.data!.weather![index].main
                                           .toString(),
@@ -201,6 +193,7 @@ class HomeScreenState extends State<HomeScreen> {
                                         fontSize: 25,
                                       ),
                                     ),
+                                    // SizedBox(height: height * 0.02),
                                     Text(
                                       dateFormat,
                                       style: const TextStyle(
@@ -209,6 +202,7 @@ class HomeScreenState extends State<HomeScreen> {
                                         fontSize: 20,
                                       ),
                                     ),
+                                    // SizedBox(height: height * 0.02),
                                     Text(
                                       '${snapshot.data!.main!.temp!.truncate().toString()}\u2103',
                                       style: const TextStyle(
@@ -220,9 +214,21 @@ class HomeScreenState extends State<HomeScreen> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceAround,
                                       children: [
-                                        // ReusableContainerWidget(),
-                                        // ReusableContainerWidget(),
-                                        // ReusableContainerWidget(),
+                                        ReusableContainerWidget(
+                                            img:
+                                                "https://cdn-icons-png.flaticon.com/512/3104/3104619.png",
+                                            tempText: "25%",
+                                            simpleText: "Cloudy"),
+                                        ReusableContainerWidget(
+                                            img:
+                                                "https://cdn-icons-png.flaticon.com/512/3104/3104619.png",
+                                            tempText: "25%",
+                                            simpleText: "Cloudy"),
+                                        ReusableContainerWidget(
+                                            img:
+                                                "https://cdn-icons-png.flaticon.com/512/3104/3104619.png",
+                                            tempText: "25%",
+                                            simpleText: "Cloudy"),
                                       ],
                                     )
                                   ],

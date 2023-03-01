@@ -12,6 +12,7 @@ windows/
 linux/
 macos/
 migrate_working_dir/
+lib/Services/
 
 # IntelliJ related
 *.iml

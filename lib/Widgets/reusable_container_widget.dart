@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ReusableContainerWidget extends StatelessWidget {
-  String timeText;
+  String simpleText;
   String tempText;
-  ReusableContainerWidget({required this.timeText, required this.tempText});
-
+  String img;
+  ReusableContainerWidget(
+      {required this.img, required this.tempText, required this.simpleText});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,10 +20,16 @@ class ReusableContainerWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           // image, time and degree
+          Image(
+            image: NetworkImage(img),
+            height: 50,
+            width: 50,
+          ),
           Text(
-            timeText,
+            tempText,
             style: const TextStyle(
               color: Colors.white,
               fontSize: 17,
@@ -30,7 +37,7 @@ class ReusableContainerWidget extends StatelessWidget {
             ),
           ),
           Text(
-            tempText,
+            simpleText,
             style: const TextStyle(
               color: Colors.white,
               fontSize: 17,
