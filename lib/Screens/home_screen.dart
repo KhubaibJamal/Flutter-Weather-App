@@ -183,7 +183,7 @@ class HomeScreenState extends State<HomeScreen> {
                                         scale: 5,
                                       ),
                                     ),
-                                    // SizedBox(height: height * 0.02),
+                                    SizedBox(height: height * 0.02),
                                     Text(
                                       snapshot.data!.weather![index].main
                                           .toString(),
@@ -193,7 +193,7 @@ class HomeScreenState extends State<HomeScreen> {
                                         fontSize: 25,
                                       ),
                                     ),
-                                    // SizedBox(height: height * 0.02),
+                                    SizedBox(height: height * 0.02),
                                     Text(
                                       dateFormat,
                                       style: const TextStyle(
@@ -202,7 +202,7 @@ class HomeScreenState extends State<HomeScreen> {
                                         fontSize: 20,
                                       ),
                                     ),
-                                    // SizedBox(height: height * 0.02),
+                                    SizedBox(height: height * 0.02),
                                     Text(
                                       '${snapshot.data!.main!.temp!.truncate().toString()}\u2103',
                                       style: const TextStyle(
@@ -210,25 +210,27 @@ class HomeScreenState extends State<HomeScreen> {
                                         fontSize: 40,
                                       ),
                                     ),
+                                    SizedBox(height: height * 0.02),
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceAround,
                                       children: [
                                         ReusableContainerWidget(
+                                            //
                                             img:
-                                                "https://cdn-icons-png.flaticon.com/512/3104/3104619.png",
+                                                "https://cdn-icons-png.flaticon.com/512/1146/1146858.png",
                                             tempText: "25%",
                                             simpleText: "Cloudy"),
                                         ReusableContainerWidget(
                                             img:
-                                                "https://cdn-icons-png.flaticon.com/512/3104/3104619.png",
-                                            tempText: "25%",
-                                            simpleText: "Cloudy"),
+                                                "https://cdn-icons-png.flaticon.com/512/3445/3445722.png",
+                                            tempText: "65%",
+                                            simpleText: "Wind"),
                                         ReusableContainerWidget(
                                             img:
                                                 "https://cdn-icons-png.flaticon.com/512/3104/3104619.png",
-                                            tempText: "25%",
-                                            simpleText: "Cloudy"),
+                                            tempText: "10%",
+                                            simpleText: "Sunny"),
                                       ],
                                     )
                                   ],
