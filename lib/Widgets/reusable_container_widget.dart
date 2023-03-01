@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ReusableContainerWidget extends StatelessWidget {
-  const ReusableContainerWidget({Key? key}) : super(key: key);
+  String timeText;
+  String tempText;
+  ReusableContainerWidget({required this.timeText, required this.tempText});
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +21,22 @@ class ReusableContainerWidget extends StatelessWidget {
       child: Column(
         children: [
           // image, time and degree
+          Text(
+            timeText,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 17,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            tempText,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 17,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ],
       ),
     );

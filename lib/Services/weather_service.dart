@@ -1,13 +1,14 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:weather_app/Models/weather_model.dart';
+
+import '../Models/weather_model.dart';
 
 class WeatherServices {
   // List<WeatherModel> weatherList = [];
-  Future<WeatherModel> fetchWeatherData() async {
+  Future<WeatherModel> fetchWeatherData(String lat, String lon) async {
     final response = await http.get(
       Uri.parse(
-          'http://api.weatherapi.com/v1/forecast.json?key=6503818c79424855b9e190640231401&q=Karachi&days=6&aqi=no&alerts=no'),
+          'https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$lon&appid=f82e826bfac980a6b653e036c9b5753e&units=metric'),
     );
 
     var data = jsonDecode(response.body);
